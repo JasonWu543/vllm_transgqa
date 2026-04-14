@@ -25,7 +25,7 @@ q^\top k \approx \mathrm{index}_Q^\top \cdot \mathrm{index}_K
 
 **Frequency Folding** 的动机：RoPE 相邻频率相似，将相邻 \(F\) 个频率跨 GQA 头拼接后联合 PCA，比逐频率独立 PCA 保留更多方差（与 TransMLA 类方法中方差论证一致）。
 
-实现侧：索引器侧复用 **MLA 风格 FP8 K cache + DSA 类 indexer kernel** 做近似打分与 top-k；主注意力仍为 **标准 GQA + 分页 KV**，通过 **Triton sparse GQA** 仅对 top-k 槽位 gather 并计算。上文已概括索引构建主线；逐步公式推导见论文或内部技术附录。
+实现侧：索引器侧复用 **MLA 风格 FP8 K cache + DSA 类 indexer kernel** 做近似打分与 top-k；主注意力仍为 **标准 GQA + 分页 KV**，通过 **Triton sparse GQA** 仅对 top-k 槽位 gather 并计算。上文已概括索引构建主线；完整分阶段推导可自行维护在本地目录 `transGQA_paper/`（已列入 `.gitignore`，不会进入远程仓库）。
 
 ---
 
@@ -60,6 +60,7 @@ vllm serve /path/to/transgqa-model
 |------|------|
 | [TransGQA_README.md](TransGQA_README.md) | 实现细节、模块清单、KV cache 与 block_size 约定 |
 | [TRANSTGQA_TESTING.md](TRANSTGQA_TESTING.md) | 测试阶段、PYTHONPATH、各 Phase 命令 |
+| `transGQA_paper/`（仅本地） | 索引构建的详细数学笔记；目录被 git 忽略，克隆自 GitHub 后需自行放置或生成 |
 
 ---
 
