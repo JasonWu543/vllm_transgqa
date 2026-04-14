@@ -1,2 +1,44 @@
-# Local-only TransGQA math notes (not pushed to GitHub)
+# Local-only TransGQA math notes (remove this line if you want the folder tracked)
 transGQA_paper/
+
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Packaging / build
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+
+# Test / type / lint caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment & secrets
+.env
+.env.*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# IDE (optional; uncomment if you do not want these in repo)
+# .idea/
+# .vscode/
